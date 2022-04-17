@@ -1,20 +1,75 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Academy Forms
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div *ngFor="let c of advancedForm">
+      <div [ngSwitch]="c.type">
+        <div *ngSwitchCase="'group'" [formGroupName]="c.key">
+          <ion-item *ngFor="let child of c.options.children">
+            <ion-label position="stacked">{{ child.options.label }}</ion-label>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+            <ion-input [formControlName]="child.key" [placeholder]="child.options.placeholder"></ion-input>
+          </ion-item>
+        </div>
+
+        <div *ngSwitchCase="'array'" [formArrayName]="c.key">
+          <div *ngFor="let group of getFormArray(c.key).controls; let i = index">
+
+            <ion-item-group [formGroupName]="i">
+              <ion-item-divider>
+                <ion-label>{{ c.key }} {{ i + 1 }}</ion-label>
+              </ion-item-divider>
+
+              <ion-item *ngFor="let child of c.options.children">
+                <ion-label position="stacked">{{ child.options.label }}</ion-label>
+
+                <ion-input [formControlName]="child.key" [placeholder]="child.options.placeholder"></ion-input>
+              </ion-item>
+
+              <ion-button expand="full" color="danger" fill="clear" (click)="removeArrayGroup(c.key, i)">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-item-group>
+
+          </div>
+          <ion-button expand="full" color="secondary" (click)="addArrayGroup(c.key, c.options.children)">
+            Add Group
+          </ion-button>
+
+        </div>
+      </div>
+    </div>
+
+    <ion-button type="submit" expand="block" [disabled]="!myForm.valid">Submit</ion-button>
+  </form>
+
+
+  <!-- simple form -->
+  <!-- <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <ion-item *ngFor="let c of simpleForm">
+      <ion-label position="stacked">
+        {{ c.options.label }}
+      </ion-label>
+      <div [ngSwitch]="c.type">
+
+        <ion-input *ngSwitchCase="'input'" [type]="c.options.type ? c.options.type : 'text'" [formControlName]="c.key"
+          [placeholder]="c.options.placeholder"></ion-input>
+
+        <ion-textarea *ngSwitchCase="'text'" [formControlName]="c.key"></ion-textarea>
+
+        <ion-datetime *ngSwitchCase="'date'" [formControlName]="c.key"></ion-datetime>
+
+        <ion-toggle *ngSwitchCase="'boolean'" [formControlName]="c.key"></ion-toggle>
+
+      </div>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="!myForm.valid">Submit</ion-button>
+  </form> -->
 </ion-content>

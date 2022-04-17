@@ -1,0 +1,50 @@
+[
+  {
+    "key": "address",
+    "type": "group",
+    "options": {
+      "children": [
+        {
+          "key": "name",
+          "type": "input",
+          "options": {
+            "label": "Full name",
+            "placeholder": "Max Lynch"
+          }
+        },
+        {
+          "key": "street",
+          "type": "input",
+          "options": {
+            "label": "Street",
+            "placeholder": "Wisconsin Ave 1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "key": "phone",
+    "type": "array",
+    "options": {
+      "children": [
+        {
+          "key": "phoneNumber",
+          "type": "input",
+          "options": {
+            "label": "Phone No.",
+            "placeholder": "123 456 789"
+          }
+        },
+        {
+          "key": "age",
+          "type": "input",
+          "options": {
+            "label": "my age.",
+            "placeholder": "11"
+          }
+        }
+      ]
+    }
+  }
+]

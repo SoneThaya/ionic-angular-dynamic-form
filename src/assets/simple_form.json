@@ -1,0 +1,42 @@
+[
+  {
+    "key": "email",
+    "type": "input",
+    "options": {
+      "label": "Your best email",
+      "placeholder": "foo@bar.com",
+      "required": true
+    }
+  },
+  {
+    "key": "password",
+    "type": "input",
+    "options": {
+      "label": "Min. 6 characters",
+      "placeholder": "123456",
+      "required": true,
+      "type": "password"
+    }
+  },
+  {
+    "key": "newsletter",
+    "type": "boolean",
+    "options": {
+      "label": "Subscribe to our newsletter"
+    }
+  },
+  {
+    "key": "birthday",
+    "type": "date",
+    "options": {
+      "label": "Your birthday"
+    }
+  },
+  {
+    "key": "notes",
+    "type": "text",
+    "options": {
+      "label": "Additional notes for us"
+    }
+  }
+]
