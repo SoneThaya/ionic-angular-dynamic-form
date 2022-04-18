@@ -1,0 +1,21 @@
+[
+  {
+    "key": "deck",
+    "type": "select",
+    "ui": {
+      "label": "Deck",
+      "placeholder": "Select..."
+    },
+
+    "source": [
+      { "value": 1, "text": "Plywood" },
+      { "value": 2, "text": "OSB" },
+      { "value": 3, "text": "Wood plank" },
+      { "value": 4, "text": "Metal" },
+      { "value": 5, "text": "Cast structure concrete" },
+      { "value": 6, "text": "Single / double T" },
+      { "value": 7, "text": "Steel - Lightweight insulating concrete" },
+      { "value": 8, "text": "Tectum" }
+    ]
+  }
+]
